@@ -15,7 +15,7 @@ def criar_pedido(dados: PedidoCreate, db: Session = Depends(get_db)):
         est = db.query(Estoque).filter(Estoque.produto_id==item.produto_id, Estoque.unidade_id==dados.unidade_id).first()
         est.quantidade -= item.quantidade
 
-    pedido = Pedido(cliente_id=dados.cliente_id, unidade_id=dados.unidade_id, canal=dados.canal, total=total)
+    pedido = Pedido(cliente_id=dados.cliente_id, unidade_id=dados.unidade_id, canal=dados.canal_pedido, total=total)
     db.add(pedido)
     db.commit()
     db.refresh(pedido)
