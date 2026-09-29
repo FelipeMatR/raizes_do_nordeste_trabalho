@@ -1,8 +1,8 @@
-python-jose
-bcrypt
-passlib
-email-validator
-pydantic
-sqlalchemy
-uvicorn
 fastapi
+uvicorn
+sqlalchemy
+pydantic
+email-validator
+passlib[bcrypt]
+bcrypt
+python-jose
