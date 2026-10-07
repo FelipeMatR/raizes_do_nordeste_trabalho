@@ -23,13 +23,13 @@ class Usuario(Base):
     nome = Column(String)
     email = Column(String, unique=True)
     senha_hash = Column(String)
-    perfil = Column(String, default="CLIENTE")
+    perfil = Column(String, default="usuario")
     consentimento_fidelidade = Column(Boolean, default=False)
     pontos = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class Estoque(Base):
-    __tablename__ = "estoques"
+    __tablename__ = "estoque"
     id = Column(Integer, primary_key=True)
     produto_id = Column(Integer, ForeignKey("produtos.id"))
     unidade_id = Column(Integer, ForeignKey("unidades.id"))
@@ -55,6 +55,15 @@ class ItemPedido(Base):
     quantidade = Column(Integer)
     preco_unitario = Column(Float)
     pedido = relationship("Pedido", back_populates="itens")
+    
+# Pagamento Mock
+class Pagamento(Base):
+    __tablename__ = "pagamentos"
+    id = Column(Integer, primary_key=True)
+    pedido_id = Column(Integer, ForeignKey("pedidos.id"), unique=True)
+    status = Column(String, default="PENDENTE")
+    forma_pagamento = Column(String)
+    payload_mock = Column(String) 
 
 class MovimentoFidelidade(Base):
     __tablename__ = "movimentos_fidelidade"
