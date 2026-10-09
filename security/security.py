@@ -3,7 +3,7 @@ from jose import jwt
 from datetime import datetime, timedelta
 
 pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
-SECRET_KEY = "raizes-do-nordeste-secret-2026"
+SECRET_KEY = "BolodeMandiocacomChocolate"
 ALGORITHM = "HS256"
 
 def hash_senha(senha: str) -> str:
