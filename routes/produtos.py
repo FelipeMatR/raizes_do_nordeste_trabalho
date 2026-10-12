@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from database.database import get_db
 from models.models import Produto
 from schemas.schemas import ProdutoCreate
+from security.security import exigir_perfis
 
 router = APIRouter(prefix="/produtos", tags=["produtos"])
 
