@@ -9,7 +9,7 @@ router = APIRouter(
     tags=["pagamentos"]
 )
 
-@router.post("/{pedido.id}")
+@router.post("/{pedido_id}")
 def processarPagamento(
     pedido_id: int,
     forma_pagamento: str,

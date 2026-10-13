@@ -6,7 +6,6 @@ from schemas.schemas import UnidadeCreate
 
 router = APIRouter(prefix="/unidades", tags=["unidades"])
 
-
 @router.post("/")
 def criar(dados: UnidadeCreate, db: Session = Depends(get_db)):
     nova = Unidade(**dados.dict())
@@ -15,11 +14,9 @@ def criar(dados: UnidadeCreate, db: Session = Depends(get_db)):
     db.refresh(nova)
     return nova
 
-
 @router.get("/")
 def listar(db: Session = Depends(get_db)):
     return db.query(Unidade).all()
-
 
 @router.get("/{unidade_id}")
 def consultar_por_id(unidade_id: int, db: Session = Depends(get_db)):
